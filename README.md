@@ -29,20 +29,24 @@ Alternatively, you can run the command directly using guile-2.0:
 
     $ guile-2.0 --debug --no-auto-compile -s teeburu.scm
 
+There are a few configuration options you can change, such as the
+port, the address to bind to (host), the number of posts kept in the
+list, etc.  These options are defined at the top of the script, if
+you wish to change them.
+
 ## Problems
-
-The list of posts is a global variable which is mutated every time
-someone makes a post.  If two people make a post at the same time, there
-is no telling what will happen.
-
-There is no limit to the length or frequency of users' POST requests.
-It would be easy to write a bot which fills the server with posts.
+There is no limit to the frequency of users' POST requests.
+It would be easy to write a bot which stresses the server, perhaps
+causing it to shut down.  I have not tested whether the server works
+well when used by many people at once, but it doesn't mutate any
+variables so there shouldn't be any data corruption if two people
+post at the same time.
 
 ## Features
-
 The entire textboard exists in RAM and makes no modifications to the
 host system.  It doesn't evaluate any POST input as Scheme code and
-as far as I can tell it escapes all input properly.
+as far as I can tell it escapes all input properly, so there should be
+no way for a user to insert scripts onto the page.
 
 ## License
 teeburu is licensed under the CC0 1.0 Universal license, a copy of which
