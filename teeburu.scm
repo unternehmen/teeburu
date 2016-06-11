@@ -1,7 +1,6 @@
 #!/bin/sh
-set -e
-/usr/bin/env guile-2.0 --debug -s $0 "$@"
-exit 0
+# -*- scheme -*-
+exec /usr/bin/env guile-2.0 --debug -s $0 "$@"
 !#
 
 (use-modules (ice-9 match)      ; Pattern matching
